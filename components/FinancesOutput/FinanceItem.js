@@ -11,6 +11,7 @@ import { pages } from "../../constants/page";
 import { GlobalStyles } from "../../constants/styles";
 
 function FinanceItem({
+  perm,
   title,
   trainType,
   studentId,
@@ -70,7 +71,7 @@ function FinanceItem({
               审核
             </Button>
           )}
-          {commitStr === "待教务审核" && searchType === "jiaowu" && (
+          {commitStr === "待教务审核" && searchType === "jiaowu" && perm !== 2 && (
             <Button
               size="sm"
               colorScheme="blue"

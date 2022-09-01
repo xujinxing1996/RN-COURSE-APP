@@ -8,13 +8,13 @@ import { AuthContext } from "../store/auth-context";
 const headerData = [
   {
     title: "信息采集",
-    perms: [1, 2, 3, 21, 22, 23, 24],
+    perms: [1, 2, 3, 4, 5, 21, 22, 23, 24],
     pathName: pages.COLLECTION_OVERVIEW,
     iconPath: require("../assets/home/info-collection.png"),
   },
   {
     title: "学生信息查询",
-    perms: [1, 2, 3, 21, 22, 23, 24],
+    perms: [1, 2, 3, 4, 5, 21, 22, 23, 24],
     pathName: pages.STUDENT_OVERVIEW,
     iconPath: require("../assets/home/student-search.png"),
   },
@@ -34,6 +34,12 @@ const headerData = [
     title: "业绩查询",
     perms: [1, 2, 3, 21, 22, 23, 24],
     pathName: pages.ALL_PERFORMANCES,
+    iconPath: require("../assets/home/info-collection.png"),
+  },
+  {
+    title: "个人业绩查询",
+    perms: [1, 2, 3, 4, 5, 21, 22, 23, 24],
+    pathName: pages.PERSONAL_PERFORMANCES,
     iconPath: require("../assets/home/info-collection.png"),
   },
 ];

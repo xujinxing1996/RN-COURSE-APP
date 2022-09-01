@@ -1,17 +1,30 @@
 import { FlatList } from "react-native";
+import RefreshListView from "../../libs/refresh-list/components/RefreshListView";
 import PerformanceItem from "./PerformanceItem";
 
-function renderPerformanceItem() {
-  return <PerformanceItem />;
+function renderPerformanceItem({ item }) {
+  const data = {
+    trainType: item.trainType,
+    studentName: item.studentName,
+    studentMobile: item.studentMobile,
+    teacherName: item.teacherName,
+    incomeFlag: item.incomeFlag,
+    performance: item.performance,
+    createDate: item.createDate,
+  };
+
+  return <PerformanceItem {...data} />;
 }
 
-function PerformanceList({ performances }) {
+function PerformanceList({ performances, refreshState, onFooterRefresh }) {
   return (
-    <FlatList
+    <RefreshListView
       data={performances}
-      keyExtractor={(item) => item.id}
+      initialNumToRender={5}
+      refreshState={refreshState}
+      keyExtractor={(item, index) => index}
       renderItem={renderPerformanceItem}
-      showsVerticalScrollIndicator={false}
+      onFooterRefresh={onFooterRefresh}
     />
   );
 }

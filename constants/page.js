@@ -22,4 +22,5 @@ export const pages = {
   TRAIN_UPDATE: "TrainUpdate",
   RECEIPT_UPLOAD: "ReceiptUpload",
   ALL_PERFORMANCES: "AllPerformances",
+  PERSONAL_PERFORMANCES: "PersonalPerformance",
 };

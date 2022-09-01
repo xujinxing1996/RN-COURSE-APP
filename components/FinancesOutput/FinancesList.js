@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import RefreshListView from "../../libs/refresh-list/components/RefreshListView";
+import { AuthContext } from "../../store/auth-context";
 import FinanceItem from "./FinanceItem";
 
 const maps = {
@@ -9,7 +10,7 @@ const maps = {
   train: "培训信息",
 };
 
-function renderFinanceItem(searchType, { item }) {
+function renderFinanceItem(searchType, perm, { item }) {
   let title = maps[item.trainType];
   let statusName = "";
 
@@ -22,6 +23,7 @@ function renderFinanceItem(searchType, { item }) {
   }
 
   const data = {
+    perm,
     trainType: item.trainType,
     studentId: item.id,
     studyId: item.studyId,
@@ -44,8 +46,9 @@ function FinancesList({
   searchType = "",
   onFooterRefresh,
 }) {
+  const authCtx = useContext(AuthContext);
   const memoRenderItem = useMemo(
-    () => renderFinanceItem.bind(null, searchType),
+    () => renderFinanceItem.bind(null, searchType, authCtx.userInfo.perm),
     [finances]
   );
 

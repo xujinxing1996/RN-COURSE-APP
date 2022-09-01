@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
   },
   authContent: {
     marginTop: 34,
-    padding: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 40,
     borderRadius: 8,
     backgroundColor: "#e4e4e4",
     elevation: 2,

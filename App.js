@@ -22,6 +22,7 @@ import TitleManage from "./screens/TitleManage";
 import TrainManage from "./screens/TrainManage";
 import AuditManage from "./screens/AuditManage";
 import ReceiptUpload from "./screens/ReceiptUpload";
+import PersonalPerformance from "./screens/PersonalPerformance";
 
 const Stack = createNativeStackNavigator();
 
@@ -269,6 +270,13 @@ function AuthenticatedStack() {
         component={AllPerformances}
         options={{
           headerTitle: "业绩查询",
+        }}
+      />
+      <Stack.Screen
+        name={pages.PERSONAL_PERFORMANCES}
+        component={PersonalPerformance}
+        options={{
+          headerTitle: "个人业绩查询",
         }}
       />
     </Stack.Navigator>

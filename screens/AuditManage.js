@@ -1,6 +1,5 @@
 import { ScrollView, View } from "native-base";
 import { useLayoutEffect, useState } from "react";
-import { EDUCATION_FORM } from "../constants/collections";
 import { commonStyles } from "../styles/common";
 import AuditForm from "../components/Collection/AuditForm";
 import { getStudentInfo } from "../fetches/modules/common";
@@ -31,19 +30,13 @@ function AuditManage({ navigation, route }) {
       });
 
       let studentCards = [];
+
       if (response.studentCards) {
-        const payImg = response.studentCards.find(
-          (img) => img.property === "jiaofei"
-        );
-        const saleImg = response.studentCards.find(
-          (img) => img.property === "youhui"
-        );
-        const otherImg = response.studentCards.find(
-          (img) => img.property === "qita"
-        );
-        const refundImg = response.studentCards.find(
-          (img) => img.property === "tuikuan"
-        );
+        const allCards = response.studentCards.reverse();
+        const payImg = allCards.find((img) => img.property === "jiaofei");
+        const saleImg = allCards.find((img) => img.property === "youhui");
+        const otherImg = allCards.find((img) => img.property === "qita");
+        const refundImg = allCards.find((img) => img.property === "tuikuan");
 
         studentCards = [payImg, saleImg, otherImg, refundImg].reduce(
           (prev, current) => {

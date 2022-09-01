@@ -11,7 +11,7 @@ function IconLink({ title, pathName, iconPath }) {
       onPress={() => navigation.navigate(pathName)}
     >
       <Image style={styles.icon} source={iconPath} />
-      <Text fontSize="sm">{title}</Text>
+      <Text style={styles.link}>{title}</Text>
     </Pressable>
   );
 }
@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   link: {
     color: "#333",
     fontWeight: "bold",
+    fontSize: 12,
   },
 });

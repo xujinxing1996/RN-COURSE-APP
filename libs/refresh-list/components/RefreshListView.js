@@ -107,7 +107,6 @@ class RefreshListView extends PureComponent {
               style={styles.image}
               source={require("../../../assets/icon-empty.png")}
             />
-            <Text style={styles.text}>暂无数据</Text>
           </View>
         }
         onEndReachedThreshold={0.1}

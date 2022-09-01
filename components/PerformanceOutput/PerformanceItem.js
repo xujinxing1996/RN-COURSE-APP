@@ -1,22 +1,30 @@
 import { StyleSheet, Text, View } from "react-native";
 import { GlobalStyles } from "../../constants/styles";
 
-function PerformanceItem() {
+function PerformanceItem({
+  trainType,
+  studentName,
+  studentMobile,
+  teacherName,
+  incomeFlag,
+  performance,
+  createDate,
+}) {
   return (
     <View style={styles.item}>
       <View>
-        <Text style={styles.textTitle}>学历信息审核</Text>
-        <Text style={styles.textBase}>学生姓名：张三</Text>
-        <Text style={styles.textBase}>手机号：13820131862</Text>
-        <Text style={styles.textBase}>招生老师：李四</Text>
-        <Text style={styles.textBase}>收入/退款：收入</Text>
+        <Text style={styles.textTitle}>{trainType}信息审核</Text>
+        <Text style={styles.textBase}>学生姓名：{studentName}</Text>
+        <Text style={styles.textBase}>手机号：{studentMobile}</Text>
+        <Text style={styles.textBase}>招生老师：{teacherName}</Text>
+        <Text style={styles.textBase}>收入/退款：{incomeFlag}</Text>
       </View>
       <View style={styles.statusContainer}>
         <View>
           <Text style={styles.textTitle}>业绩</Text>
-          <Text style={styles.status}>1500</Text>
+          <Text style={styles.status}>{performance}</Text>
         </View>
-        <Text style={styles.textBase}>日期：2022-07-21</Text>
+        <Text style={styles.textBase}>日期：{createDate}</Text>
       </View>
     </View>
   );

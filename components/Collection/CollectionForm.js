@@ -34,6 +34,7 @@ import {
   TRAIN_FORM,
 } from "../../constants/collections";
 import {
+  getInfoByIdNum,
   updateCollection,
   updateCollectionFee,
 } from "../../fetches/modules/common";
@@ -79,7 +80,24 @@ function CollectionForm({
   );
 
   useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
+    const subscription = watch(async (value, { name, type }) => {
+      if (name === "idNum") {
+        const idNum = value[name];
+        const isValid =
+          /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(
+            idNum
+          );
+        if (!isValid) return;
+        try {
+          const { student = {} } = await getInfoByIdNum(idNum, authCtx.token);
+          const { name, phoneNum, ...appDoNotNeedFields } = student;
+          setValue("name", name);
+          setValue("phone", phoneNum);
+          setValue("appDoNotNeedFields", appDoNotNeedFields);
+        } catch (error) {
+          console.log(`error`, error);
+        }
+      }
       if (labelsWatchFields[name] && value[name]) {
         handleChangeChildrenOptions(value[name].id, labelsWatchFields[name]);
       }
@@ -600,6 +618,7 @@ function CollectionForm({
                 icon="ios-add"
                 color="#000"
                 size={24}
+                title="增加分期"
                 onPress={handleAppendPayInfo}
               />
             ) : (
@@ -607,6 +626,7 @@ function CollectionForm({
                 icon="ios-remove"
                 color="#000"
                 size={24}
+                title="删除"
                 onPress={() => remove(index)}
               />
             )}

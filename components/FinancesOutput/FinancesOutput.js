@@ -7,16 +7,16 @@ import { fetchNumber } from "../../fetches/configure";
 import { RefreshState } from "../../libs/refresh-list/constant";
 import { AuthContext } from "../../store/auth-context";
 import { commonStyles } from "../../styles/common";
+import FinanceSearch from "./FinanceSearch";
 import FinancesList from "./FinancesList";
 
-function FinancesOutput({
-  searchType = "",
-  teacherMobile = "",
-  trainType = "",
-}) {
+function FinancesOutput({ searchType = "", trainType = "" }) {
   const authCtx = useContext(AuthContext);
   const toast = useToast();
   const [pageInfo, setPageInfo] = useState({
+    search: {
+      name: "",
+    },
     finances: [],
     refreshState: RefreshState.HeaderRefreshing,
     page: 0,
@@ -24,6 +24,7 @@ function FinancesOutput({
 
   useFocusEffect(
     useCallback(() => {
+      console.log(`pageInfo`, pageInfo);
       getList();
     }, [])
   );
@@ -41,12 +42,12 @@ function FinancesOutput({
 
   async function getList() {
     let list = [];
-    let { finances, refreshState, page } = pageInfo;
+    let { finances, refreshState, page, search } = pageInfo;
 
     const response = await getFinanceList(
+      search.name,
       page,
       searchType,
-      teacherMobile,
       trainType,
       authCtx.token
     );
@@ -71,6 +72,12 @@ function FinancesOutput({
         }));
       }
     } else {
+      setPageInfo({
+        search: { ...search },
+        finances: [],
+        refreshState: RefreshState.EmptyData,
+        page: 0,
+      });
       toast.show({
         description: "查询错误",
         placement: "top",
@@ -93,8 +100,20 @@ function FinancesOutput({
     }));
   }
 
+  function handleSearchByName(name) {
+    setPageInfo({
+      search: {
+        name,
+      },
+      finances: [],
+      refreshState: RefreshState.HeaderRefreshing,
+      page: 0,
+    });
+  }
+
   return (
     <View style={commonStyles.container}>
+      <FinanceSearch onSearch={handleSearchByName} />
       <FinancesList
         refreshState={pageInfo.refreshState}
         finances={pageInfo.finances}

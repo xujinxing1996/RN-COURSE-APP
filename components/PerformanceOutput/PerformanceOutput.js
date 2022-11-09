@@ -79,6 +79,13 @@ function PerformanceOutput({ isAll }) {
         }));
       }
     } else {
+      setPageInfo({
+        performances: [],
+        startDate: "",
+        endDate: "",
+        refreshState: RefreshState.EmptyData,
+        page: 0,
+      });
       toast.show({
         description: "查询错误",
         placement: "top",

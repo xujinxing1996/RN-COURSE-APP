@@ -4,6 +4,7 @@ import { commonStyles } from "../styles/common";
 import AuditForm from "../components/Collection/AuditForm";
 import { getStudentInfo } from "../fetches/modules/common";
 import Loading from "../components/UI/Loading";
+import { pages } from "../constants/page";
 
 function AuditManage({ navigation, route }) {
   const {
@@ -13,6 +14,7 @@ function AuditManage({ navigation, route }) {
     studyId = "",
     businessProgress = "",
     isLook = false,
+    // resolveType = "",
   } = route.params;
   const [defaultValues, setDefaultValues] = useState(null);
   const [otherValues, setOtherValues] = useState([]);
@@ -176,6 +178,11 @@ function AuditManage({ navigation, route }) {
 
   async function handleSubmit() {
     navigation.goBack();
+    // const pageName =
+    //   resolveType === "caiwu" ? pages.ALL_FINANCES : pages.ALL_TEACHERS;
+
+    // console.log(`pageName`, pageName);
+    // navigation.navigate(pageName);
   }
 
   if (!defaultValues) {

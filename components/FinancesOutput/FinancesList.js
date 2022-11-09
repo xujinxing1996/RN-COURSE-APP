@@ -31,8 +31,13 @@ function renderFinanceItem(searchType, perm, { item }) {
     idNo: item.idNo,
     studentName: item.name,
     teacherName: item.teacherName,
+    takeProjectName: "",
+    takeMajorName: "",
     statusName,
     searchType,
+    // searchName,
+    applyProject: item.applyProject,
+    studentMajor: item.studentMajor,
     businessProgress: item.businessProgress,
     commitStr: item.commitStr,
   };
@@ -44,11 +49,18 @@ function FinancesList({
   refreshState,
   // onHeaderRefresh,
   searchType = "",
+  // searchName = "",
   onFooterRefresh,
 }) {
   const authCtx = useContext(AuthContext);
   const memoRenderItem = useMemo(
-    () => renderFinanceItem.bind(null, searchType, authCtx.userInfo.perm),
+    () =>
+      renderFinanceItem.bind(
+        null,
+        // searchName,
+        searchType,
+        authCtx.userInfo.perm
+      ),
     [finances]
   );
 

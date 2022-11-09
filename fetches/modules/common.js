@@ -2,16 +2,10 @@ import { baseUrl } from "../configure";
 import { getAction, postJSONAction } from "../methods";
 
 // 学生、财务、教务-查询列表
-export function getFinanceList(
-  page,
-  searchType,
-  teacherMobile,
-  trainType,
-  token
-) {
+export function getFinanceList(name = "", page, searchType, trainType, token) {
   return postJSONAction(
     baseUrl +
-      `studentInfo/getStudentList?limit=10&offset=${page}&trainType=${trainType}&idNo=&teacherMobile=${teacherMobile}&teacherName=&commitFlag=&businessProgress=&name=&userType=${searchType}`,
+      `studentInfo/getStudentList?limit=10&offset=${page}&trainType=${trainType}&idNo=&commitFlag=&businessProgress=&name=${name}&userType=${searchType}`,
     null,
     {
       Authorization: token,
@@ -57,4 +51,15 @@ export function updateFee(data, token) {
 // 获取采集信息
 export function getStudentInfo(data) {
   return getAction(baseUrl + "studentInfo/getStudentInfo", data);
+}
+
+// 获取历史信息
+export function getInfoByIdNum(idNo, token) {
+  return getAction(
+    baseUrl + "studentInfo/getStudentInfo",
+    { idNo },
+    {
+      Authorization: token,
+    }
+  );
 }

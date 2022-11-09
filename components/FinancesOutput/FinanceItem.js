@@ -21,11 +21,13 @@ function FinanceItem({
   teacherName,
   statusName,
   searchType,
+  // searchName,
+  applyProject,
+  studentMajor,
   businessProgress,
   commitStr,
 }) {
   const navigation = useNavigation();
-
   let editRoute = "";
   switch (trainType) {
     case EDUCATION_FORM:
@@ -48,6 +50,8 @@ function FinanceItem({
         <Text style={styles.textTitle}>{title}</Text>
         <Text style={styles.textBase}>学生姓名：{studentName}</Text>
         <Text style={styles.textBase}>证件号：{idNo}</Text>
+        <Text style={styles.textBase}>报考项目：{applyProject}</Text>
+        <Text style={styles.textBase}>报考专业：{studentMajor}</Text>
         <Text style={styles.textBase}>招生老师：{teacherName}</Text>
         <Text style={styles.textBase}>业务进度：{statusName}</Text>
       </View>
@@ -65,6 +69,7 @@ function FinanceItem({
                   idNo,
                   studyId,
                   resolveType: "caiwu",
+                  // searchName,
                 });
               }}
             >
@@ -82,6 +87,7 @@ function FinanceItem({
                   idNo,
                   studyId,
                   resolveType: "jiaowu",
+                  // searchName,
                 });
               }}
             >
@@ -99,6 +105,7 @@ function FinanceItem({
                   headerTitle: title + "修改",
                   idNo,
                   studyId,
+                  // searchName,
                 });
               }}
             >
@@ -114,6 +121,7 @@ function FinanceItem({
                   trainType,
                   studyId,
                   studentId,
+                  // searchName,
                 });
               }}
             >
@@ -136,6 +144,7 @@ function FinanceItem({
                   studyId,
                   businessProgress,
                   isLook: true,
+                  // searchName,
                 }
               );
             }}

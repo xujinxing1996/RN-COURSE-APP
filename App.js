@@ -179,6 +179,7 @@ function StudentOverview() {
         })}
       />
       <Stack.Screen name={pages.STUDENT_VIEW} component={AuditManage} />
+      <Stack.Screen name={pages.AUDIT_MANAGE} component={AuditManage} />
       <Stack.Screen name={pages.EDUCATION_UPDATE} component={EducationManage} />
       <Stack.Screen
         name={pages.OCCUPATION_UPDATE}

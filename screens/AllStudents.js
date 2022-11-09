@@ -5,17 +5,15 @@ import { AuthContext } from "../store/auth-context";
 function AllStudents() {
   const authCtx = useContext(AuthContext);
 
-  const { perm, mobile } = authCtx.userInfo;
+  const { perm } = authCtx.userInfo;
   let searchType = "";
-  let teacherMobile = "";
   if (perm == 1) {
     searchType = "guanli";
   } else {
     searchType = "teacher";
-    teacherMobile = mobile;
   }
 
-  return <FinancesOutput searchType="guanli" teacherMobile={teacherMobile} />;
+  return <FinancesOutput searchType={searchType} />;
 }
 
 export default AllStudents;

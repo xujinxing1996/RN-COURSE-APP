@@ -1,12 +1,12 @@
 import { baseUrl } from "../configure";
 import { postAction, postJSONAction } from "../methods";
 
-// 学历信息采集-学习形式
+// 学历提升采集-学习形式
 export function getStudyType() {
   return postJSONAction(baseUrl + "education/queryModeList");
 }
 
-// 学历信息采集
+// 学历提升采集
 export function getBatches(id, trainType) {
   const data = {
     trainType,
@@ -15,12 +15,12 @@ export function getBatches(id, trainType) {
   return postAction(baseUrl + "education/queryBatchList", data);
 }
 
-// 学历信息采集-学历层次
+// 学历提升采集-学历层次
 export function getEducationLevel() {
   return postJSONAction(baseUrl + "education/queryEducationList");
 }
 
-// 学历信息采集-学校名
+// 学历提升采集-学校名
 export function getSchoolNames(id) {
   const data = {
     educationId: id,
@@ -28,7 +28,7 @@ export function getSchoolNames(id) {
   return postAction(baseUrl + "education/querySchoolList", data);
 }
 
-// 学历信息采集-专业
+// 学历提升采集-专业
 export function getMajorNames(id) {
   const data = {
     schoolId: id,

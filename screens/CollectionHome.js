@@ -6,22 +6,22 @@ function CollectionHome({ navigation }) {
   const links = [
     {
       bgColor: "blue",
-      title: "学历信息采集",
+      title: "学历提升",
       pathName: pages.EDUCATION_COLLECTION,
     },
     {
       bgColor: "violet",
-      title: "职业信息采集",
+      title: "职业技能",
       pathName: pages.OCCUPATION_COLLECTION,
     },
     {
       bgColor: "green",
-      title: "职称信息采集",
+      title: "职称评审",
       pathName: pages.TITLE_COLLECTION,
     },
     {
       bgColor: "pink",
-      title: "培训信息采集",
+      title: "执业资格",
       pathName: pages.TRAIN_COLLECTION,
     },
   ];

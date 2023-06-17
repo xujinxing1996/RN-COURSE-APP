@@ -6,16 +6,33 @@ function PerformanceItem({
   studentName,
   studentMobile,
   teacherName,
+  applyProject,
+  major,
   incomeFlag,
   performance,
   createDate,
 }) {
+  let trainTypeTitle = "学历提升";
+  switch (trainType) {
+    case "职业":
+      trainTypeTitle = "职业技能";
+      break;
+    case "职称":
+      trainTypeTitle = "职称评审";
+      break;
+    case "培训":
+      trainTypeTitle = "执业资格";
+      break;
+  }
+
   return (
     <View style={styles.item}>
       <View>
-        <Text style={styles.textTitle}>{trainType}信息审核</Text>
+        <Text style={styles.textTitle}>{trainTypeTitle}</Text>
         <Text style={styles.textBase}>学生姓名：{studentName}</Text>
         <Text style={styles.textBase}>手机号：{studentMobile}</Text>
+        <Text style={styles.textBase}>报考项目：{applyProject}</Text>
+        <Text style={styles.textBase}>报考专业：{major}</Text>
         <Text style={styles.textBase}>招生老师：{teacherName}</Text>
         <Text style={styles.textBase}>收入/退款：{incomeFlag}</Text>
       </View>

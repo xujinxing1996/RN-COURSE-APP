@@ -8,6 +8,8 @@ function renderPerformanceItem({ item }) {
     studentName: item.studentName,
     studentMobile: item.studentMobile,
     teacherName: item.teacherName,
+    applyProject: item.applyProject,
+    major: item.major,
     incomeFlag: item.incomeFlag,
     performance: item.performance,
     createDate: item.createDate,

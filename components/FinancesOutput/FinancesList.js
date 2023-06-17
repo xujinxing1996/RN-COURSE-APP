@@ -4,10 +4,10 @@ import { AuthContext } from "../../store/auth-context";
 import FinanceItem from "./FinanceItem";
 
 const maps = {
-  education: "学历信息",
-  occupation: "职业信息",
-  title: "职称信息",
-  train: "培训信息",
+  education: "学历提升",
+  occupation: "职业技能",
+  title: "职称评审",
+  train: "执业资格",
 };
 
 function renderFinanceItem(searchType, perm, { item }) {

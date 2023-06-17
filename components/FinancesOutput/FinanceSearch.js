@@ -2,18 +2,18 @@ import { Button, HStack, Input, Text } from "native-base";
 import { useState } from "react";
 
 function FinanceSearch({ onSearch }) {
-  const [name, setName] = useState("");
+  const [searchName, setSearchNameName] = useState("");
 
   const handlePress = () => {
-    onSearch(name);
+    onSearch(searchName);
   };
 
   return (
     <HStack justifyContent="space-between" mb="2" alignItems="center">
       <Text>学生姓名:</Text>
       <Input
-        value={name}
-        onChangeText={(text) => setName(text)}
+        value={searchName}
+        onChangeText={(text) => setSearchNameName(text)}
         w="55%"
         h="8"
       />

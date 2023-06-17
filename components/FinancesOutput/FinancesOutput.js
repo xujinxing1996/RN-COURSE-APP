@@ -1,6 +1,6 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { useToast } from "native-base";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useState, useRef } from "react";
 import { View } from "react-native";
 import { getFinanceList } from "../../fetches";
 import { fetchNumber } from "../../fetches/configure";
@@ -12,11 +12,9 @@ import FinancesList from "./FinancesList";
 
 function FinancesOutput({ searchType = "", trainType = "" }) {
   const authCtx = useContext(AuthContext);
+  let searchName = useRef("");
   const toast = useToast();
   const [pageInfo, setPageInfo] = useState({
-    search: {
-      name: "",
-    },
     finances: [],
     refreshState: RefreshState.HeaderRefreshing,
     page: 0,
@@ -24,8 +22,7 @@ function FinancesOutput({ searchType = "", trainType = "" }) {
 
   useFocusEffect(
     useCallback(() => {
-      console.log(`pageInfo`, pageInfo);
-      getList();
+      getList(searchName.current);
     }, [])
   );
 
@@ -37,15 +34,16 @@ function FinancesOutput({ searchType = "", trainType = "" }) {
       refreshState === RefreshState.EmptyData
     )
   ) {
-    getList();
+    console.log(`searchName.current`, searchName.current);
+    getList(searchName.current);
   }
 
-  async function getList() {
+  async function getList(name = "") {
     let list = [];
-    let { finances, refreshState, page, search } = pageInfo;
+    let { finances, refreshState, page } = pageInfo;
 
     const response = await getFinanceList(
-      search.name,
+      name,
       page,
       searchType,
       trainType,
@@ -73,7 +71,7 @@ function FinancesOutput({ searchType = "", trainType = "" }) {
       }
     } else {
       setPageInfo({
-        search: { ...search },
+        name,
         finances: [],
         refreshState: RefreshState.EmptyData,
         page: 0,
@@ -101,10 +99,9 @@ function FinancesOutput({ searchType = "", trainType = "" }) {
   }
 
   function handleSearchByName(name) {
+    searchName.current = name;
+    // getList(name);
     setPageInfo({
-      search: {
-        name,
-      },
       finances: [],
       refreshState: RefreshState.HeaderRefreshing,
       page: 0,

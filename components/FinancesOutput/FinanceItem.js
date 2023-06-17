@@ -44,6 +44,11 @@ function FinanceItem({
       break;
   }
 
+  const majorText =
+    studentMajor.length >= 10
+      ? studentMajor.slice(0, 10) + "..."
+      : studentMajor;
+
   return (
     <View style={styles.financeItem}>
       <View>
@@ -51,7 +56,7 @@ function FinanceItem({
         <Text style={styles.textBase}>学生姓名：{studentName}</Text>
         <Text style={styles.textBase}>证件号：{idNo}</Text>
         <Text style={styles.textBase}>报考项目：{applyProject}</Text>
-        <Text style={styles.textBase}>报考专业：{studentMajor}</Text>
+        <Text style={styles.textBase}>报考专业：{majorText}</Text>
         <Text style={styles.textBase}>招生老师：{teacherName}</Text>
         <Text style={styles.textBase}>业务进度：{statusName}</Text>
       </View>

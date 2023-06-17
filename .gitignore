@@ -1,5 +1,5 @@
 node_modules/
-# constants/apiConfig.js
+constants/apiConfig.js
 .expo/
 dist/
 npm-debug.*
